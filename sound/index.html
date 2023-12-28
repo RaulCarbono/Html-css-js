@@ -14,11 +14,90 @@
   </head>
   <body>
     <div class="container_sounds">
-      <button class="sound">hola</button>
-      <button class="sound">hola</button>
-      <button class="sound">hola</button>
-      <button class="sound">hola</button>
-      <button class="sound">hola</button>
+      <button
+        data-key="65"
+        class="sound"
+      >
+        <span class="prueba">Do</span>
+      </button>
+
+      <button
+        data-key="83"
+        class="sound"
+      >
+        <span>Re</span>
+      </button>
+      <button
+        class="sound"
+        data-key="68"
+      >
+        <span>fa</span>
+      </button>
+      <button
+        class="sound"
+        data-key="70"
+      >
+        <span>sol</span>
+      </button>
+      <button
+        class="sound"
+        data-key="71"
+      >
+        <span>la</span>
+      </button>
+      <button
+        class="sound"
+        data-key="72"
+      >
+        <span>si</span>
+      </button>
     </div>
+
+    <audio
+      data-key="83"
+      src="./assets/sonido1.mp3"
+    ></audio>
+    <audio
+      data-key="65"
+      src="./assets/Mario Bros 🎹💪.mp3"
+    ></audio>
+    <audio
+      data-key="68"
+      src="./assets/sonido3.mp3"
+    ></audio>
+    <audio
+      data-key="70"
+      src="./assets/sonido4.mp3"
+    ></audio>
+    <audio
+      data-key="71"
+      src="./assets/sonido6.mp3"
+    ></audio>
+    <audio
+      data-key="72"
+      src="./assets/sonido2.mp3"
+    ></audio>
+
+    <script>
+      window.addEventListener('keydown', function (e) {
+        const keyCode = e.keyCode;
+        const button = document.querySelector(`button[data-key="${keyCode}"]`);
+        const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+
+        if (button && audio) {
+          button.classList.remove('sound');
+          button.classList.add('sounds_activate');
+          // Reproduce el audio
+          audio.play();
+
+          // Elimina la clase después de un tiempo (puedes ajustar el tiempo según tus necesidades)
+          setTimeout(() => {
+            button.classList.remove('sounds_activate');
+            button.classList.add('sound');
+            audio.pause();
+          }, 3000);
+        }
+      });
+    </script>
   </body>
 </html>
